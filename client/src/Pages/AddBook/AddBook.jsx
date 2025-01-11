@@ -4,6 +4,7 @@ import useAuth from "../../Auth/Hook/useAuth";
 import { FaBookBookmark } from "react-icons/fa6";
 import axios from "axios";
 import Navbar from "../../Components/Navbar";
+import { useEffect, useState } from "react";
 
 const AddBook = () => {
   // contextAPI
@@ -40,18 +41,41 @@ const AddBook = () => {
       userEmail,
     };
 
-    axios.post('https://trackbook-server.vercel.app/addBook', addBookData)
-    .then((res) => {
-      console.log(res);
-      toast.success("Book Added Successfully");
-    })
+    axios
+      .post("https://trackbook-server.vercel.app/addBook", addBookData)
+      .then((res) => {
+        console.log(res);
+        toast.success("Book Added Successfully");
+      });
   };
+
+  // state for scroll
+  const [isScroll, setIsScroll] = useState(false);
+
+  // useEffect for navbar scroll
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    });
+  }, []);
 
   return (
     <>
-    <section className="bg-[url(/assets/pageTitle3.jpg)] bg-center bg-cover">
-        <div className="bg-[#18273a33] text-white">
+      <section className="bg-[url(/assets/pageTitle3.jpg)] bg-center bg-cover">
+        <div
+          className={`fixed top-0 z-50 w-full ${
+            isScroll
+              ? "bg-white dark:bg-[#010313] backdrop-blur-sm dark:backdrop-blur-sm bg-opacity-70 dark:bg-opacity-70 text-black dark:text-white"
+              : "text-white"
+          }`}
+        >
           <Navbar></Navbar>
+        </div>
+        <div className="bg-[#18273a33] text-white pt-24">
           <PageTitle
             title={"Add Book"}
             subtitle={"Contribute a Book to Our Collection"}

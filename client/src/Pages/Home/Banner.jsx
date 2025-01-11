@@ -18,14 +18,14 @@ const Banner = () => {
         spaceBetween={40}
         // effect={"fade"}
         autoplay={{
-          delay: 3500,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         pagination={{
           clickable: true,
         }}
         modules={[Pagination, Autoplay, EffectFade]}
-        className="mySwiper min-h-[86vh] dark:bg-[#0e1629] bg-[#f4f4eb]"
+        className="mySwiper min-h-[86vh] dark:bg-[#0e1629] bg-[#f4f4eb] bg-[url(/assets/bg.svg)] bg-cover bg-bottom"
       >
         {/* slider-01 */}
         <SwiperSlide>
@@ -40,7 +40,7 @@ const Banner = () => {
                     transition={{
                       type: "spring",
                       bounce: 0.3,
-                      duration: 0.8,
+                      duration: 1.8,
                     }}
                     src={banner1}
                     className="sm:max-w-sm"
@@ -49,7 +49,7 @@ const Banner = () => {
               </div>
 
               {/* part-02 */}
-              <div className="flex-1">
+              <div className="flex-1 lg:-mt-7">
                 <div className="flex items-center gap-2 mb-4">
                   <h5 className="font-bold sm:text-lg">Book Club</h5>
                   <svg
@@ -107,7 +107,7 @@ const Banner = () => {
                     transition={{
                       type: "spring",
                       bounce: 0.3,
-                      duration: 0.8,
+                      duration: 1.8,
                     }}
                     src={banner2}
                     className="sm:max-w-sm"
@@ -116,7 +116,7 @@ const Banner = () => {
               </div>
 
               {/* part-02 */}
-              <div className="flex-1">
+              <div className="flex-1 lg:-mt-7">
                 <div className="flex items-center gap-2 mb-4">
                   <h5 className="font-bold sm:text-lg">Book Club</h5>
                   <svg
@@ -174,7 +174,7 @@ const Banner = () => {
                     transition={{
                       type: "spring",
                       bounce: 0.3,
-                      duration: 0.8,
+                      duration: 1.8,
                     }}
                     src={banner3}
                     className="sm:max-w-sm "
@@ -183,7 +183,7 @@ const Banner = () => {
               </div>
 
               {/* part-02 */}
-              <div className="flex-1">
+              <div className="flex-1 lg:-mt-7">
                 <div className="flex items-center gap-2 mb-4">
                   <h5 className="font-bold sm:text-lg">Book Club</h5>
                   <svg

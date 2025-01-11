@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../Components/Navbar";
 import Quotes from "../../Components/Quotes";
 import Banner from "./Banner";
@@ -12,6 +12,24 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Home = () => {
+  // state for scroll
+  const [isScroll, setIsScroll] = useState(false);
+
+  // useEffect for navbar scroll
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if(window.scrollY > 50){
+        setIsScroll(true);
+      }
+      else{
+        setIsScroll(false);
+      }
+    });
+  }, []);
+
+
+
+  // useEffect for AOS
   useEffect(() => {
     AOS.init({
       duration: 1200,
@@ -19,15 +37,15 @@ const Home = () => {
       once: false,
     });
   }, []);
-  
+
   return (
     <div className=" overflow-x-hidden">
-      <header className="bg-[#f4f4eb] dark:bg-[#0e1629]">
+      <header className={`fixed top-0 z-50 w-full ${isScroll ? 'bg-white dark:bg-[#010313] backdrop-blur-sm dark:backdrop-blur-sm bg-opacity-70 dark:bg-opacity-70' : 'bg-[#f4f4eb] dark:bg-[#0e1629] border-b dark:border-b-black'}`}>
         <Navbar></Navbar>
       </header>
 
       {/* banner */}
-      <section>
+      <section className="pt-24">
         <Banner></Banner>
         {/* quotes */}
         <div data-aos="fade-up" className=" w-11/12 mx-auto py-28">
